@@ -66,7 +66,6 @@ vector<int> separateFactors(int num){
         }
         if (num%prime[i] == 0){
             factors.push_back(prime[i]);
-            //cout << num << " " << prime[i] << endl;
             num/=prime[i];
         }else{
             ++i;
@@ -84,9 +83,25 @@ vector<int> getFactorialVec(int num){
 }
 
 void printAns(int num, vector<int> ans){
-    cout << num << "! = ";
+    if (num/100 == 0){
+        if (num/10 == 0)
+            cout << " ";
+        cout << " ";
+    }
+    cout << num << "! =";
+    int spacecont15 = 0;
     for ( int i : ans){
-        cout << i << " ";
+        if (spacecont15 == 15){
+            spacecont15 = 0;
+            cout << endl << "      ";
+        }
+        if (i/100 == 0){
+            if (i/10 == 0)
+                cout << " ";
+            cout << " ";
+        }
+        cout << i;
+        ++spacecont15;
     }
     cout << endl;
 }
@@ -97,7 +112,7 @@ int main() {
     while(N!=0) {
         do {
             cin >> N;
-        } while (100 <= N | 1 == N | N < 0 );
+        } while (100 < N | 1 == N | N < 0 );
         listofN.push_back(N);
     }
     listofN.pop_back();
